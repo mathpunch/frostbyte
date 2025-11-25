@@ -2,18 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <title>frostbyte</title>
     <meta name="description" content="A simple but powerful proxy" />
-    <link rel="shortcut icon" content="favicon.ico" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#4CAF50">
     <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Product+Sans"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Product+Sans" rel="stylesheet" />
     <script src="baremux/index.js" defer></script>
     <script src="epoxy/index.js" defer></script>
     <script src="uv/uv.bundle.js" defer></script>
@@ -27,19 +23,8 @@
     <div class="flex-center header-center dropIn unselectable"></div>
 
     <form autocomplete="off" id="uv-form" class="flex-center blurOut" style="display:flex; justify-content:center; width:100%; margin-top:50px;">
-      <input
-        autocomplete="false"
-        id="uv-search-engine"
-        value="https://www.bing.com/search?q=%s"
-        type="hidden"
-      />
-      <input
-        autocomplete="false"
-        id="uv-address"
-        type="text"
-        placeholder="Search without restrictions"
-        style="width:50%; padding:10px; font-size:16px;"
-      />
+      <input autocomplete="false" id="uv-search-engine" value="https://www.bing.com/search?q=%s" type="hidden" />
+      <input autocomplete="false" id="uv-address" type="text" placeholder="Search without restrictions" style="width:50%; padding:10px; font-size:16px;" />
     </form>
 
     <div class="center-margin">
@@ -49,12 +34,7 @@
 
     <div class="bottomText unselectable left">frostbyte v1.0.0</div>
     <div class="bottomText unselectable right">
-      <a
-        href="https://github.com/iceycolduser/frostbyte"
-        rel="noopener"
-        target="_blank"
-        >Github</a
-      >
+      <a href="https://github.com/iceycolduser/frostbyte" rel="noopener" target="_blank">Github</a>
     </div>
 
     <iframe id="uv-frame" title="Proxy Content Frame"></iframe>
