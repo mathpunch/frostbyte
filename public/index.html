@@ -30,23 +30,8 @@
     <script src="search.js" defer></script>
     <script src="index.js" defer></script>
   </head>
-  <body>
-    <script>
-      if (window.location.pathname === '/' && window.name !== 'ab' && !sessionStorage.getItem('ab_asked')) {
-        sessionStorage.setItem('ab_asked', '1');
-        setTimeout(function() {
-          if (confirm('Open in a new window for better privacy?')) {
-            var w = window.open('about:blank');
-            if (w) {
-              w.document.write('<!DOCTYPE html><html><head><title>New Tab</title><style>*{margin:0;padding:0}body,html{width:100%;height:100%;overflow:hidden}iframe{border:0;width:100%;height:100%;display:block}</style></head><body><iframe name="ab" src="' + window.location.origin + '/" allow="fullscreen"></iframe></body></html>');
-              w.document.close();
-              window.close();
-            }
-          }
-        }, 2000);
-      }
-    </script>
 
+  <body>
     <div class="theme-toggle-container">
       <button
         id="theme-toggle"
