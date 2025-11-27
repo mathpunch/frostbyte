@@ -21,12 +21,58 @@
     <script src="register-sw.js" defer></script>
     <script src="search.js" defer></script>
     <script src="index.js" defer></script>
+    <style>
+      /* Additional responsive styling for the search form */
+      #uv-form {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 600px;
+        padding: 0 20px;
+        box-sizing: border-box;
+      }
+      
+      #uv-address {
+        width: 100% !important;
+        padding: 15px 20px !important;
+        font-size: 16px !important;
+        box-sizing: border-box;
+        border-radius: 25px;
+        border: 2px solid #ccc;
+        outline: none;
+        transition: border-color 0.3s;
+      }
+      
+      #uv-address:focus {
+        border-color: #4CAF50;
+      }
+      
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        #uv-form {
+          width: 95%;
+          padding: 0 10px;
+        }
+        
+        #uv-address {
+          padding: 12px 15px !important;
+          font-size: 14px !important;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        #uv-address {
+          padding: 10px 12px !important;
+          font-size: 14px !important;
+        }
+      }
+    </style>
   </head>
-
   <body>
     <div class="flex-center header-center dropIn unselectable"></div>
-
-    <form autocomplete="off" id="uv-form" class="flex-center blurOut" style="display:flex; justify-content:center; width:100%; margin-top:50px;">
+    <form autocomplete="off" id="uv-form" class="flex-center blurOut">
       <input
         autocomplete="false"
         id="uv-search-engine"
@@ -38,15 +84,12 @@
         id="uv-address"
         type="text"
         placeholder="Search without restrictions"
-        style="width:50%; padding:10px; font-size:16px;"
       />
     </form>
-
     <div class="center-margin">
       <p id="uv-error"></p>
       <pre id="uv-error-code"></pre>
     </div>
-
     <div class="bottomText unselectable left">frostbyte v1.0.0</div>
     <div class="bottomText unselectable right">
       <a
@@ -56,7 +99,6 @@
         >Github</a
       >
     </div>
-
     <iframe id="uv-frame" title="Proxy Content Frame"></iframe>
   </body>
 </html>
