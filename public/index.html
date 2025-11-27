@@ -22,32 +22,36 @@
     <script src="search.js" defer></script>
     <script src="index.js" defer></script>
     <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+      
       #uv-form {
-        position: fixed !important;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        width: 90% !important;
-        max-width: 600px !important;
-        margin-top: 0 !important;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
       
       #uv-address {
-        width: 100% !important;
-        padding: 15px 20px !important;
-        font-size: 16px !important;
+        min-width: 500px;
+        padding: 15px 20px;
+        font-size: 16px;
         border-radius: 25px;
         border: 2px solid #ccc;
         box-sizing: border-box;
       }
       
       @media (max-width: 768px) {
-        #uv-form {
-          width: 90% !important;
-        }
-        
         #uv-address {
-          padding: 12px 15px !important;
+          min-width: 300px;
+          width: 90vw;
+          padding: 12px 15px;
         }
       }
     </style>
