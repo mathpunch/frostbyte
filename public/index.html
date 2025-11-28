@@ -21,12 +21,27 @@
     <script src="register-sw.js" defer></script>
     <script src="search.js" defer></script>
     <script src="index.js" defer></script>
+    <style>
+      body, html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+      }
+      #uv-form {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+    </style>
   </head>
-
   <body>
     <div class="flex-center header-center dropIn unselectable"></div>
-
-    <form autocomplete="off" id="uv-form" class="flex-center blurOut" style="display:flex; justify-content:center; width:100%; margin-top:50px;">
+    <form autocomplete="off" id="uv-form" class="flex-center blurOut">
       <input
         autocomplete="false"
         id="uv-search-engine"
@@ -41,12 +56,10 @@
         style="width:50%; padding:10px; font-size:16px;"
       />
     </form>
-
     <div class="center-margin">
       <p id="uv-error"></p>
       <pre id="uv-error-code"></pre>
     </div>
-
     <div class="bottomText unselectable left">frostbyte v1.0.0</div>
     <div class="bottomText unselectable right">
       <a
@@ -56,7 +69,6 @@
         >Github</a
       >
     </div>
-
     <iframe id="uv-frame" title="Proxy Content Frame"></iframe>
   </body>
 </html>
