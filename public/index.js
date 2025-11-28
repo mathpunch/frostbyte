@@ -1,12 +1,10 @@
 "use strict";
-
 const form = document.getElementById("uv-form");
 const address = document.getElementById("uv-address");
 const searchEngine = document.getElementById("uv-search-engine");
 const error = document.getElementById("uv-error");
 const errorCode = document.getElementById("uv-error-code");
 const frame = document.getElementById("uv-frame");
-
 const connection = new BareMux.BareMuxConnection("/baremux/worker.js");
 
 form.addEventListener("submit", async (event) => {
@@ -15,9 +13,7 @@ form.addEventListener("submit", async (event) => {
   if (!inputValue) return;
 
   try {
-    if ("serviceWorker" in navigator) {
-      await navigator.serviceWorker.register("register-sw.js");
-    }
+    await registerSW();
   } catch (err) {
     error.textContent = "Failed to register service worker.";
     errorCode.textContent = err.toString();
@@ -26,7 +22,6 @@ form.addEventListener("submit", async (event) => {
   }
 
   const url = search(inputValue, searchEngine.value || "https://www.bing.com/search?q=%s");
-
   frame.style.display = "block";
 
   const themeContainer = document.querySelector(".theme-toggle-container");
@@ -85,6 +80,7 @@ function initializeTheme() {
 
 function toggleTheme() {
   if (!isInitialized) return;
+
   const isDarkMode = body.classList.contains("dark-theme");
 
   themeIcon.classList.add("spin");
