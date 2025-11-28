@@ -85,6 +85,8 @@ body {
   will-change: background-image, filter;
   transform: translateZ(0);
   contain: layout style paint;
+  justify-content: center;
+  align-items: center;
 }
 
 html.dark-theme body,
@@ -216,8 +218,7 @@ body.dark-theme .bottomText {
   animation-fill-mode: forwards;
 }
 
-.flex-center,
-.header-center {
+.flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -225,8 +226,7 @@ body.dark-theme .bottomText {
 }
 
 .header-center {
-  margin-top: 10%;
-  padding: 0 20px;
+  display: none;
 }
 
 .center-margin {
@@ -329,10 +329,6 @@ a:active {
 }
 
 @media screen and (max-width: 768px) {
-  .header-center {
-    margin-top: 20%;
-  }
-
   form input {
     width: 85%;
     height: 52px;
@@ -356,10 +352,6 @@ a:active {
 }
 
 @media screen and (max-width: 480px) {
-  .header-center {
-    margin-top: 25%;
-  }
-
   form input {
     width: 90%;
     padding: 0 15px;
