@@ -22,11 +22,11 @@
     <script src="search.js" defer></script>
     <script src="index.js" defer></script>
     <style>
-      body, html {
-        height: 100%;
-        margin: 0;
+      body {
         display: flex;
-        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
       }
       #uv-form {
         position: absolute;
@@ -34,8 +34,10 @@
         left: 50%;
         transform: translate(-50%, -50%);
         width: 100%;
-        display: flex;
-        justify-content: center;
+        margin: 0 !important;
+      }
+      .header-center {
+        display: none;
       }
     </style>
   </head>
