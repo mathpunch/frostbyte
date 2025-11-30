@@ -94,7 +94,6 @@ body.dark-theme {
   background-image: url("bgDark.avif");
 }
 
-/* REMOVED - This was causing the blur effect
 body::before {
   content: "";
   position: fixed;
@@ -110,7 +109,6 @@ body::before {
   filter: blur(10px);
   z-index: -1;
 }
-*/
 
 form input {
   background: #b1c7ee;
