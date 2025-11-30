@@ -316,7 +316,7 @@
     </div>
 
     <script>
-      // Load settings from storage
+      // Load settings from localStorage
       function loadSettings() {
         const settings = {
           searchEngine: localStorage.getItem('searchEngine') || 'https://www.bing.com/search?q=%s',
@@ -368,16 +368,30 @@
       // Reset settings
       document.getElementById('reset-btn').addEventListener('click', function() {
         if (confirm('Are you sure you want to reset all settings to default?')) {
-          localStorage.clear();
+          localStorage.removeItem('searchEngine');
+          localStorage.removeItem('transport');
+          localStorage.removeItem('tabCloak');
+          localStorage.removeItem('cloakTitle');
+          localStorage.removeItem('cloakFavicon');
+          localStorage.removeItem('panicKey');
+          localStorage.removeItem('panicUrl');
           loadSettings();
           document.getElementById('cloak-settings').style.display = 'none';
+          
+          const successMsg = document.getElementById('success-msg');
+          successMsg.textContent = 'Settings reset to default!';
+          successMsg.style.display = 'block';
+          setTimeout(() => {
+            successMsg.textContent = 'Settings saved successfully!';
+            successMsg.style.display = 'none';
+          }, 3000);
         }
       });
 
       // Load settings on page load
       loadSettings();
 
-      // Apply panic key
+      // Apply panic key on settings page too
       const panicKey = localStorage.getItem('panicKey');
       const panicUrl = localStorage.getItem('panicUrl') || 'https://www.google.com';
       
