@@ -278,6 +278,15 @@
           </label>
         </div>
 
+        <div class="setting-item">
+          <label class="setting-label">Performance Mode</label>
+          <p class="setting-description">Remove animations and background image for faster loading</p>
+          <label class="toggle-switch">
+            <input type="checkbox" id="performance-mode">
+            <span class="slider"></span>
+          </label>
+        </div>
+
         <div class="setting-item" id="cloak-settings" style="display: none;">
           <label class="setting-label">Tab Title</label>
           <input type="text" class="setting-input" id="cloak-title" placeholder="Google">
@@ -316,7 +325,6 @@
     </div>
 
     <script>
-      // Load settings from localStorage
       function loadSettings() {
         const settings = {
           searchEngine: localStorage.getItem('searchEngine') || 'https://www.bing.com/search?q=%s',
@@ -325,7 +333,8 @@
           cloakTitle: localStorage.getItem('cloakTitle') || 'Google',
           cloakFavicon: localStorage.getItem('cloakFavicon') || 'https://www.google.com/favicon.ico',
           panicKey: localStorage.getItem('panicKey') || '',
-          panicUrl: localStorage.getItem('panicUrl') || 'https://www.google.com'
+          panicUrl: localStorage.getItem('panicUrl') || 'https://www.google.com',
+          performanceMode: localStorage.getItem('performanceMode') === 'true'
         };
 
         document.getElementById('search-engine').value = settings.searchEngine;
@@ -335,18 +344,17 @@
         document.getElementById('cloak-favicon').value = settings.cloakFavicon;
         document.getElementById('panic-key').value = settings.panicKey;
         document.getElementById('panic-url').value = settings.panicUrl;
+        document.getElementById('performance-mode').checked = settings.performanceMode;
 
         if (settings.tabCloak) {
           document.getElementById('cloak-settings').style.display = 'block';
         }
       }
 
-      // Toggle cloak settings visibility
       document.getElementById('tab-cloak').addEventListener('change', function() {
         document.getElementById('cloak-settings').style.display = this.checked ? 'block' : 'none';
       });
 
-      // Save settings
       document.getElementById('settings-form').addEventListener('submit', function(e) {
         e.preventDefault();
 
@@ -357,6 +365,7 @@
         localStorage.setItem('cloakFavicon', document.getElementById('cloak-favicon').value);
         localStorage.setItem('panicKey', document.getElementById('panic-key').value);
         localStorage.setItem('panicUrl', document.getElementById('panic-url').value);
+        localStorage.setItem('performanceMode', document.getElementById('performance-mode').checked);
 
         const successMsg = document.getElementById('success-msg');
         successMsg.style.display = 'block';
@@ -365,7 +374,6 @@
         }, 3000);
       });
 
-      // Reset settings
       document.getElementById('reset-btn').addEventListener('click', function() {
         if (confirm('Are you sure you want to reset all settings to default?')) {
           localStorage.removeItem('searchEngine');
@@ -375,6 +383,7 @@
           localStorage.removeItem('cloakFavicon');
           localStorage.removeItem('panicKey');
           localStorage.removeItem('panicUrl');
+          localStorage.removeItem('performanceMode');
           loadSettings();
           document.getElementById('cloak-settings').style.display = 'none';
           
@@ -388,10 +397,8 @@
         }
       });
 
-      // Load settings on page load
       loadSettings();
 
-      // Apply panic key on settings page too
       const panicKey = localStorage.getItem('panicKey');
       const panicUrl = localStorage.getItem('panicUrl') || 'https://www.google.com';
       
