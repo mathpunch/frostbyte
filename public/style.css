@@ -105,7 +105,7 @@
 
 body {
   background: linear-gradient(135deg, #a8d8ff 0%, #7ec8ff 100%);
-  background-image: url("bgLight.avif");
+  background-image: url("https://i.ibb.co/cXC9QQw4/bgLight.jpg");
   margin: 0;
   background-size: cover;
   background-repeat: no-repeat;
@@ -127,7 +127,7 @@ body {
 html.dark-theme body,
 body.dark-theme {
   background: linear-gradient(135deg, #1a2332 0%, #2d3e50 100%);
-  background-image: url("bgDark.avif");
+  background-image: url("https://i.ibb.co/cXC9QQw4/bgLight.jpg");
 }
 
 body::before {
