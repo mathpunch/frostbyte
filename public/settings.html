@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>frostbyte - settings</title>
+    <meta name="description" content="Configure your proxy settings" />
+    <link rel="shortcut icon" content="favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Product+Sans"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(135deg, #a8d8ff 0%, #7ec8ff 100%);
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+      }
+
+      .settings-container {
+        max-width: 600px;
+        margin: 80px auto;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 0.5s ease-in;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .settings-header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .settings-header h1 {
+        font-family: 'Product Sans', sans-serif;
+        font-size: 2.5em;
+        margin: 0 0 10px 0;
+        color: #2c5aa0;
+        text-shadow: 0 0 20px rgba(100, 200, 255, 0.3);
+      }
+
+      .settings-header p {
+        color: #5a7fb8;
+        margin: 0;
+      }
+
+      .setting-item {
+        margin-bottom: 25px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid rgba(100, 150, 200, 0.2);
+      }
+
+      .setting-item:last-child {
+        border-bottom: none;
+      }
+
+      .setting-label {
+        display: block;
+        font-family: 'Product Sans', sans-serif;
+        font-size: 1.1em;
+        color: #2c5aa0;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+
+      .setting-description {
+        font-size: 0.9em;
+        color: #5a7fb8;
+        margin-bottom: 12px;
+      }
+
+      .setting-input {
+        width: 100%;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(100, 150, 200, 0.3);
+        border-radius: 8px;
+        color: #2c5aa0;
+        font-family: 'Product Sans', sans-serif;
+        font-size: 1em;
+        transition: all 0.3s ease;
+      }
+
+      .setting-input:focus {
+        outline: none;
+        background: #fff;
+        border-color: #5a9fff;
+        box-shadow: 0 0 15px rgba(90, 159, 255, 0.3);
+      }
+
+      .setting-select {
+        width: 100%;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(100, 150, 200, 0.3);
+        border-radius: 8px;
+        color: #2c5aa0;
+        font-family: 'Product Sans', sans-serif;
+        font-size: 1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .setting-select:focus {
+        outline: none;
+        background: #fff;
+        border-color: #5a9fff;
+      }
+
+      .setting-select option {
+        background: #fff;
+        color: #2c5aa0;
+      }
+
+      .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 30px;
+      }
+
+      .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(100, 150, 200, 0.3);
+        transition: 0.4s;
+        border-radius: 30px;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 22px;
+        width: 22px;
+        left: 4px;
+        bottom: 4px;
+        background-color: #5a9fff;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+
+      input:checked + .slider {
+        background-color: #5a9fff;
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(30px);
+        background-color: white;
+      }
+
+      .button-group {
+        display: flex;
+        gap: 15px;
+        margin-top: 30px;
+      }
+
+      .btn {
+        flex: 1;
+        padding: 15px;
+        font-family: 'Product Sans', sans-serif;
+        font-size: 1.1em;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #5a9fff 0%, #3d7fd8 100%);
+        color: #fff;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(90, 159, 255, 0.4);
+      }
+
+      .btn-secondary {
+        background: rgba(100, 150, 200, 0.2);
+        color: #2c5aa0;
+        border: 1px solid rgba(100, 150, 200, 0.3);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(100, 150, 200, 0.3);
+      }
+
+      .back-link {
+        display: inline-block;
+        color: #5a7fb8;
+        text-decoration: none;
+        margin-bottom: 20px;
+        font-family: 'Product Sans', sans-serif;
+        transition: color 0.3s ease;
+      }
+
+      .back-link:hover {
+        color: #2c5aa0;
+      }
+
+      .success-message {
+        background: rgba(76, 175, 80, 0.3);
+        border: 1px solid rgba(76, 175, 80, 0.5);
+        color: #fff;
+        padding: 12px;
+        border-radius: 8px;
+        margin-top: 20px;
+        text-align: center;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="settings-container">
+      <a href="index.html" class="back-link">← Back to Home</a>
+      
+      <div class="settings-header">
+        <h1>Settings</h1>
+        <p>Customize your frostbyte experience</p>
+      </div>
+
+      <form id="settings-form">
+        <div class="setting-item">
+          <label class="setting-label">Search Engine</label>
+          <p class="setting-description">Choose your default search engine</p>
+          <select class="setting-select" id="search-engine">
+            <option value="https://www.bing.com/search?q=%s">Bing</option>
+            <option value="https://www.google.com/search?q=%s">Google</option>
+            <option value="https://duckduckgo.com/?q=%s">DuckDuckGo</option>
+            <option value="https://search.brave.com/search?q=%s">Brave</option>
+            <option value="https://www.ecosia.org/search?q=%s">Ecosia</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <label class="setting-label">Proxy Transport</label>
+          <p class="setting-description">Select the transport backend</p>
+          <select class="setting-select" id="transport">
+            <option value="epoxy">Epoxy (Default)</option>
+            <option value="libcurl">Libcurl</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <label class="setting-label">Enable Tab Cloaking</label>
+          <p class="setting-description">Disguise the tab title and favicon</p>
+          <label class="toggle-switch">
+            <input type="checkbox" id="tab-cloak">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item" id="cloak-settings" style="display: none;">
+          <label class="setting-label">Tab Title</label>
+          <input type="text" class="setting-input" id="cloak-title" placeholder="Google">
+          
+          <label class="setting-label" style="margin-top: 15px;">Favicon URL</label>
+          <input type="text" class="setting-input" id="cloak-favicon" placeholder="https://www.google.com/favicon.ico">
+        </div>
+
+        <div class="setting-item">
+          <label class="setting-label">Panic Key</label>
+          <p class="setting-description">Quickly close the tab when pressed</p>
+          <select class="setting-select" id="panic-key">
+            <option value="">Disabled</option>
+            <option value="`">` (Backtick)</option>
+            <option value="Escape">Escape</option>
+            <option value="F1">F1</option>
+            <option value="F2">F2</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <label class="setting-label">Panic URL</label>
+          <p class="setting-description">Where to redirect when panic key is pressed</p>
+          <input type="text" class="setting-input" id="panic-url" placeholder="https://www.google.com">
+        </div>
+
+        <div class="button-group">
+          <button type="submit" class="btn btn-primary">Save Settings</button>
+          <button type="button" class="btn btn-secondary" id="reset-btn">Reset to Default</button>
+        </div>
+
+        <div class="success-message" id="success-msg">
+          Settings saved successfully!
+        </div>
+      </form>
+    </div>
+
+    <script>
+      // Load settings from storage
+      function loadSettings() {
+        const settings = {
+          searchEngine: localStorage.getItem('searchEngine') || 'https://www.bing.com/search?q=%s',
+          transport: localStorage.getItem('transport') || 'epoxy',
+          tabCloak: localStorage.getItem('tabCloak') === 'true',
+          cloakTitle: localStorage.getItem('cloakTitle') || 'Google',
+          cloakFavicon: localStorage.getItem('cloakFavicon') || 'https://www.google.com/favicon.ico',
+          panicKey: localStorage.getItem('panicKey') || '',
+          panicUrl: localStorage.getItem('panicUrl') || 'https://www.google.com'
+        };
+
+        document.getElementById('search-engine').value = settings.searchEngine;
+        document.getElementById('transport').value = settings.transport;
+        document.getElementById('tab-cloak').checked = settings.tabCloak;
+        document.getElementById('cloak-title').value = settings.cloakTitle;
+        document.getElementById('cloak-favicon').value = settings.cloakFavicon;
+        document.getElementById('panic-key').value = settings.panicKey;
+        document.getElementById('panic-url').value = settings.panicUrl;
+
+        if (settings.tabCloak) {
+          document.getElementById('cloak-settings').style.display = 'block';
+        }
+      }
+
+      // Toggle cloak settings visibility
+      document.getElementById('tab-cloak').addEventListener('change', function() {
+        document.getElementById('cloak-settings').style.display = this.checked ? 'block' : 'none';
+      });
+
+      // Save settings
+      document.getElementById('settings-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        localStorage.setItem('searchEngine', document.getElementById('search-engine').value);
+        localStorage.setItem('transport', document.getElementById('transport').value);
+        localStorage.setItem('tabCloak', document.getElementById('tab-cloak').checked);
+        localStorage.setItem('cloakTitle', document.getElementById('cloak-title').value);
+        localStorage.setItem('cloakFavicon', document.getElementById('cloak-favicon').value);
+        localStorage.setItem('panicKey', document.getElementById('panic-key').value);
+        localStorage.setItem('panicUrl', document.getElementById('panic-url').value);
+
+        const successMsg = document.getElementById('success-msg');
+        successMsg.style.display = 'block';
+        setTimeout(() => {
+          successMsg.style.display = 'none';
+        }, 3000);
+      });
+
+      // Reset settings
+      document.getElementById('reset-btn').addEventListener('click', function() {
+        if (confirm('Are you sure you want to reset all settings to default?')) {
+          localStorage.clear();
+          loadSettings();
+          document.getElementById('cloak-settings').style.display = 'none';
+        }
+      });
+
+      // Load settings on page load
+      loadSettings();
+
+      // Apply panic key
+      const panicKey = localStorage.getItem('panicKey');
+      const panicUrl = localStorage.getItem('panicUrl') || 'https://www.google.com';
+      
+      if (panicKey) {
+        document.addEventListener('keydown', function(e) {
+          if (e.key === panicKey) {
+            window.location.href = panicUrl;
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
