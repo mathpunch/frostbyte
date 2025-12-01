@@ -130,6 +130,27 @@ body.dark-theme {
   background-image: url("bgDark.avif");
 }
 
+body.performance-mode {
+  background: #a8d8ff !important;
+  background-image: none !important;
+}
+
+body.dark-theme.performance-mode {
+  background: #1a2332 !important;
+  background-image: none !important;
+}
+
+body.performance-mode::before {
+  display: none !important;
+}
+
+body.performance-mode *,
+body.performance-mode *::before,
+body.performance-mode *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
 body::before {
   content: "";
   position: fixed;
